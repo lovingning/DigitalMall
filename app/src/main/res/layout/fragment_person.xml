@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--toolbar-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <!--此部分在滑动后会折叠-->
+            <!--个人信息部分-->
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:minHeight="@dimen/prefer_view_height"
+                app:layout_collapseMode="parallax">
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/prefer_inner_padding_horizontal"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:maxHeight="@dimen/max_view_height"
+                    android:minHeight="@dimen/prefer_view_height"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_person_black_24dp"/>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="user_name"
+                    app:layout_constraintLeft_toRightOf="@id/iv_head"
+                    app:layout_constraintTop_toTopOf="@id/iv_head"/>
+
+                <ImageView
+                    android:id="@+id/iv_certification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="@dimen/smallest_view_height"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_head"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_name"
+                    app:srcCompat="@drawable/ic_person_black_24dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/prefer_view_padding_vertical"
+                    android:maxHeight="@dimen/smallest_view_height"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_certification"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@id/iv_certification"
+                    app:layout_constraintTop_toTopOf="@id/iv_certification"
+                    app:srcCompat="@drawable/ic_person_black_24dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/prefer_view_padding_vertical"
+                    android:maxHeight="@dimen/smallest_view_height"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_lock"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@id/iv_lock"
+                    app:layout_constraintTop_toTopOf="@id/iv_lock"
+                    app:srcCompat="@drawable/ic_person_black_24dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/prefer_view_padding_vertical"
+                    android:maxHeight="@dimen/smallest_view_height"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_phone"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@id/iv_phone"
+                    app:layout_constraintTop_toTopOf="@id/iv_phone"
+                    app:srcCompat="@drawable/ic_person_black_24dp"/>
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--信息展示区域-->
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--个人的信息-->
+            <GridView
+                android:id="@+id/rv_personInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/prefer_view_height"/>
+
+            <!--我的订单-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></LinearLayout>
+
+            <GridView
+                android:id="@+id/gv_orders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/prefer_view_height"/>
+
+            <!--第三方服务-->
+            <TextView
+                style="@style/TextViewStandard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="第三方服务"/>
+
+            <GridView
+                android:id="@+id/gv_ottServices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/prefer_view_height"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

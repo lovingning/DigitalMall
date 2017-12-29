@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--toolbar-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <!--此部分在滑动后会折叠-->
+            <LinearLayout
+                android:id="@+id/ll_controlShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/prefer_view_height"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:orientation="vertical"
+                app:layout_collapseMode="parallax">
+
+                <!--功能入口:转入,燃料,转出-->
+                <GridView
+                    android:id="@+id/gv_mainFunction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/prefer_view_height"/>
+
+                <!--数字资产总量-->
+                <TextView
+                    android:id="@+id/tv_currencyAmount"
+                    style="@style/TextViewStandard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="数字资产:共8种"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:gravity="top"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <com.acchain.community.view.UnEnableSearchView
+                    android:id="@+id/sv_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_background_search_view_white"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center_vertical"
+                    android:imeOptions="actionSearch"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="查询资产"/>
+            </android.support.v7.widget.Toolbar>
+
+            <!--数字资产分类-->
+            <TableLayout
+                android:id="@+id/tl_currency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:minHeight="@dimen/prefer_view_height"
+                android:text="Tab_layout"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--信息展示区域-->
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!--数字资产详细列表-->
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/xrv_currency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,38 @@
+package com.acchain.community.view;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+import com.acchain.community.R;
+
+/**
+ * 功能----空布局
+ * <p>
+ * Created by ACChain on 2017/9/18.
+ */
+
+public class EmptyView extends LinearLayout {
+    public EmptyView(Context context) {
+        super(context, null);
+    }
+
+    public EmptyView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public EmptyView(Context context, AttributeSet attrs, int defStyleAttr) {
+        this(context, attrs, defStyleAttr,0);
+    }
+
+    public EmptyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr);
+        inflate(context, R.layout.layout_empty_view, this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        setLayoutParams(params);
+        setGravity(Gravity.CENTER);
+        setOrientation(VERTICAL);
+    }
+}
